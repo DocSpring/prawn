@@ -17,6 +17,7 @@ module Prawn
             kerning: options[:kerning],
           )
           @disable_wrap_by_char = options[:disable_wrap_by_char]
+          @disable_wrap_height_check = options[:disable_wrap_height_check]
         end
 
         # See the developer documentation for PDF::Core::Text#wrap
@@ -126,6 +127,8 @@ module Prawn
               @descender + @line_height + @leading
             end
           require_relatived_total_height = @baseline_y.abs + diff
+          return true if @disable_wrap_height_check
+
           if require_relatived_total_height > @height + 0.0001
             # no room for the full height of this line
             @arranger.repack_unretrieved

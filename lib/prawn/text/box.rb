@@ -77,6 +77,9 @@ module Prawn
     #   The minimum font size to use when `:overflow` is set to `:shrink_to_fit`
     #   (that is the font size will not be reduced to less than this value, even
     #   if it means that some text will be cut off).
+    # @option options :disable_wrap_height_check [Boolean] (false)
+    #   If true, then truncated text would render even if
+    #   text height exceeds field height
     # @return [String] Any text that did not print under the current settings.
     # @raise [Prawn::Errors::CannotFit]
     #   If not wide enough to print any text.
